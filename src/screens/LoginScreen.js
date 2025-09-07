@@ -25,31 +25,36 @@ export default function LoginScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Login</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Email"
-        value={email}
-        onChangeText={setEmail}
-        autoCapitalize="none"
-        keyboardType="email-address"
-      />
-      <View style={styles.passwordContainer}>
+      <View style={styles.form}>
+        <Text style={styles.title}>Login</Text>
         <TextInput
-          style={styles.passwordInput}
-          placeholder="Password"
-          value={password}
-          onChangeText={setPassword}
-          secureTextEntry={!showPassword}
+          style={styles.input}
+          placeholder="Email"
+          value={email}
+          onChangeText={setEmail}
+          autoCapitalize="none"
+          keyboardType="email-address"
+          placeholderTextColor="#d9c9b2"
         />
-        <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
-          <Text style={styles.eye}>{showPassword ? '🙈' : '👁️'}</Text>
-        </TouchableOpacity>
+        <View style={styles.passwordContainer}>
+          <TextInput
+            style={styles.passwordInput}
+            placeholder="Password"
+            value={password}
+            onChangeText={setPassword}
+            secureTextEntry={!showPassword}
+            placeholderTextColor="#d9c9b2"
+          />
+          <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
+            <Text style={styles.eye}>{showPassword ? '🙈' : '👁️'}</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.buttonSpacing}><Button title={loading ? 'Loading...' : 'Sign In'} onPress={handleSignIn} disabled={loading} /></View>
+        <View style={styles.buttonSpacing}><Button title="Sign In with Google" onPress={handleGoogleSignIn} /></View>
       </View>
-      <Button title={loading ? 'Loading...' : 'Sign In'} onPress={handleSignIn} disabled={loading} />
-      <Button title="Sign In with Google" onPress={handleGoogleSignIn} />
-      <Button title="New user? Sign Up" onPress={() => navigation.navigate('SignUp')} />
-  {/* Temporary navigation buttons for testing removed */}
+      <TouchableOpacity style={styles.footerLinkArea} onPress={() => navigation.navigate('SignUp')}>
+        <Text style={styles.linkText}>New user? Sign Up</Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -57,24 +62,31 @@ export default function LoginScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor: '#fff',
+    backgroundColor: '#0a1a33',
     padding: 16,
+  },
+  form: {
+    width: '100%',
+    maxWidth: 340,
+    alignItems: 'center',
   },
   title: {
     fontSize: 24,
     marginBottom: 20,
+  color: '#d9c9b2'
   },
   input: {
     width: '100%',
     maxWidth: 300,
     height: 40,
-    borderColor: '#ccc',
+  borderColor: '#3a4d6b',
     borderWidth: 1,
     borderRadius: 5,
     marginBottom: 10,
     paddingHorizontal: 10,
+  color: '#d9c9b2'
   },
   passwordContainer: {
     flexDirection: 'row',
@@ -86,13 +98,28 @@ const styles = StyleSheet.create({
   passwordInput: {
     flex: 1,
     height: 40,
-    borderColor: '#ccc',
+  borderColor: '#3a4d6b',
     borderWidth: 1,
     borderRadius: 5,
     paddingHorizontal: 10,
+  color: '#d9c9b2'
   },
   eye: {
     fontSize: 20,
     marginLeft: 10,
+  color: '#d9c9b2'
+  },
+  buttonSpacing: {
+    width: '100%',
+    maxWidth: 300,
+    marginTop: 14,
+  },
+  footerLinkArea: {
+    paddingVertical: 24,
+  },
+  linkText: {
+    color: '#d9c9b2',
+    fontSize: 14,
+    textDecorationLine: 'underline'
   },
 });
