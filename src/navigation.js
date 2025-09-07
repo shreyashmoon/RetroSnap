@@ -5,6 +5,7 @@ import LoginScreen from './screens/LoginScreen';
 import SignUpScreen from './screens/SignUpScreen';
 import CameraScreen from './screens/CameraScreen';
 import GalleryScreen from './screens/GalleryScreen';
+import AccountScreen from './screens/AccountScreen';
 
 const Stack = createStackNavigator();
 
@@ -16,6 +17,7 @@ export default function AppNavigator() {
         <Stack.Screen name="SignUp" component={SignUpScreen} />
         <Stack.Screen name="Camera" component={CameraScreen} />
         <Stack.Screen name="Gallery" component={GalleryScreen} />
+        <Stack.Screen name="Account" component={AccountScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

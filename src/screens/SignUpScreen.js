@@ -15,8 +15,8 @@ export default function SignUpScreen({ navigation }) {
     setLoading(true);
     const { error } = await supabase.auth.signUp({ email, password, options: { data: { username } } });
     setLoading(false);
-    if (error) alert('Sign Up Error: ' + error.message);
-    else alert('Sign Up Success! Check your email for confirmation.');
+  if (error) alert('Sign Up Error: ' + error.message);
+  else alert('Sign Up Success! You can now log in.');
   };
 
   const handleGoogleSignIn = async () => {

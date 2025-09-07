@@ -49,11 +49,7 @@ export default function LoginScreen({ navigation }) {
       <Button title={loading ? 'Loading...' : 'Sign In'} onPress={handleSignIn} disabled={loading} />
       <Button title="Sign In with Google" onPress={handleGoogleSignIn} />
       <Button title="New user? Sign Up" onPress={() => navigation.navigate('SignUp')} />
-      {/* Temporary navigation buttons for testing */}
-      <View style={{ marginTop: 20 }}>
-        <Button title="Go to Camera" onPress={() => navigation.navigate('Camera')} />
-        <Button title="Go to Gallery" onPress={() => navigation.navigate('Gallery')} />
-      </View>
+  {/* Temporary navigation buttons for testing removed */}
     </View>
   );
 }
